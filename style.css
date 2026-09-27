@@ -3,7 +3,11 @@ body {
     text-align: center;
     margin: 0;
     padding: 60px 20px;
+    min-height: 100vh;
+    box-sizing: border-box;
     background: linear-gradient(135deg, #e8f3ff, #ffffff);
+    background-repeat: no-repeat;
+    background-size: cover;
 }
 
 img {
