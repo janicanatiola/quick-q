@@ -1,22 +1,29 @@
 body {
     font-family: Arial, sans-serif;
     text-align: center;
-    margin-top: 100px;
-    background-color: #f5f7fa;
+    margin: 0;
+    padding: 60px 20px;
+    background: linear-gradient(135deg, #e8f3ff, #ffffff);
 }
 
-h1 {
-    font-size: 50px;
+img {
+    width: 280px;
+    max-width: 90%;
+    margin-bottom: 20px;
 }
 
 p {
     font-size: 20px;
+    color: #1559a6;
 }
 
 button {
-    padding: 15px 30px;
+    padding: 15px 35px;
     font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #1769c2;
     border: none;
-    border-radius: 10px;
+    border-radius: 12px;
     cursor: pointer;
 }
