@@ -65,6 +65,8 @@ document.getElementById("peopleAhead").textContent =
         "Currently being served: #" + currentServing;
 }
 
+setInterval(updateQueue, 1000);
+
     function cancelQueue() {
     let myNumber = Number(sessionStorage.getItem("myQueueNumber"));
 
