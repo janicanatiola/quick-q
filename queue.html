@@ -14,7 +14,7 @@
 
     <h2 id="queueNumber">#1</h2>
 
-    <p>People ahead of you: 0</p>
+    <p id="peopleAhead">People ahead of you: 0</p>
 
     <br>
 
@@ -23,6 +23,9 @@
 <script>
     let queueNumber = localStorage.getItem("queueNumber");
     document.getElementById("queueNumber").textContent = "#" + queueNumber;
+
+    document.getElementById("peopleAhead").textContent =
+    "People ahead of you: " + (Number(queueNumber) - 1);
 </script>
 
 </body>
