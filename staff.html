@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Staff Dashboard - Quick-Q</title>
+    <link rel="stylesheet" href="style.css?v=2">
+</head>
+
+<body>
+
+    <h1>Staff Dashboard</h1>
+
+    <p>Queue Management</p>
+
+    <h2 id="currentlyServing">Currently being served: #1</h2>
+
+    <button onclick="callNext()">Call Next</button>
+
+    <br><br>
+
+    <button onclick="skipNumber()">Skip</button>
+
+    <br><br>
+
+    <button onclick="markServed()">Mark Served</button>
+
+    <script>
+
+        function callNext() {
+    let activeQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
+
+    if (activeQueue.length === 0) {
+        alert("No one is waiting.");
+        return;
+    }
+
+    let current = Number(localStorage.getItem("currentlyServing")) || activeQueue[0];
+
+    let nextIndex = activeQueue.indexOf(current) + 1;
+
+    if (nextIndex >= activeQueue.length) {
+        alert("No more people waiting.");
+        return;
+    }
+
+    let nextNumber = activeQueue[nextIndex];
+
+    localStorage.setItem("currentlyServing", nextNumber);
+
+    document.getElementById("currentlyServing").textContent =
+        "Currently being served: #" + nextNumber;
+}
+
+        function skipNumber() {
+            alert("Skip clicked!");
+        }
+
+        function markServed() {
+            alert("Mark Served clicked!");
+        }
+
+    </script>
+
+</body>
+
+</html>
