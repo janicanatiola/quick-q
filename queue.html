@@ -43,9 +43,19 @@ document.getElementById("peopleAhead").textContent =
     "People ahead of you: " + peopleAhead;
 
     function cancelQueue() {
-    localStorage.removeItem("queueNumber");
+    let myNumber = Number(sessionStorage.getItem("myQueueNumber"));
+
+    let activeQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
+
+    activeQueue = activeQueue.filter(number => number !== myNumber);
+
+    localStorage.setItem("activeQueue", JSON.stringify(activeQueue));
+
+    sessionStorage.removeItem("myQueueNumber");
+
     window.location.href = "index.html";
 }
+
 </script>
 
 </body>
