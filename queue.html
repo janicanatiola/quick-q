@@ -22,6 +22,8 @@
 
     <button onclick="cancelQueue()">Cancel Queue</button>
 
+    <button onclick="resetQueue()">Reset Test Queue</button>
+
 <script>
     let queueNumber = sessionStorage.getItem("myQueueNumber");
 
@@ -52,6 +54,15 @@ document.getElementById("peopleAhead").textContent =
 
     localStorage.setItem("activeQueue", JSON.stringify(activeQueue));
 
+    sessionStorage.removeItem("myQueueNumber");
+
+    window.location.href = "index.html";
+}
+
+function resetQueue() {
+    localStorage.removeItem("activeQueue");
+    localStorage.removeItem("nextQueueNumber");
+    localStorage.removeItem("currentlyServing");
     sessionStorage.removeItem("myQueueNumber");
 
     window.location.href = "index.html";
