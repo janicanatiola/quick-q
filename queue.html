@@ -23,8 +23,8 @@
     <button onclick="cancelQueue()">Cancel Queue</button>
 
 <script>
-    let queueNumber = localStorage.getItem("queueNumber");
-    
+    let queueNumber = sessionStorage.getItem("myQueueNumber");
+
 let currentlyServing = localStorage.getItem("currentlyServing");
 
 if (currentlyServing === null) {
