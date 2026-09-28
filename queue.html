@@ -18,7 +18,7 @@
 
     <br>
 
-    <button onclick="window.location.href='index.html'">Cancel Queue</button>
+    <button onclick="cancelQueue()">Cancel Queue</button>
 
 <script>
     let queueNumber = localStorage.getItem("queueNumber");
@@ -26,6 +26,11 @@
 
     document.getElementById("peopleAhead").textContent =
     "People ahead of you: " + (Number(queueNumber) - 1);
+
+    function cancelQueue() {
+    localStorage.removeItem("queueNumber");
+    window.location.href = "index.html";
+}
 </script>
 
 </body>
