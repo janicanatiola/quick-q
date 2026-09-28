@@ -20,9 +20,19 @@
 
   <script>
     function joinQueue() {
+        let queueNumber = localStorage.getItem("queueNumber");
+
+        if (queueNumber === null) {
+            queueNumber = 1;
+        } else {
+            queueNumber = Number(queueNumber) + 1;
+        }
+
+        localStorage.setItem("queueNumber", queueNumber);
+
         window.location.href = "queue.html";
     }
-</script>
+  </script>
 
 </body>
 </html>
