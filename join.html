@@ -20,18 +20,32 @@
 
   <script>
     function joinQueue() {
-        let queueNumber = localStorage.getItem("queueNumber");
+    let nextNumber = localStorage.getItem("nextQueueNumber");
 
-        if (queueNumber === null) {
-            queueNumber = 1;
-        } else {
-            queueNumber = Number(queueNumber) + 1;
-        }
-
-        localStorage.setItem("queueNumber", queueNumber);
-
-        window.location.href = "queue.html";
+    if (nextNumber === null) {
+        nextNumber = 1;
+    } else {
+        nextNumber = Number(nextNumber);
     }
+
+    let queueNumber = nextNumber;
+
+    localStorage.setItem("nextQueueNumber", nextNumber + 1);
+
+    sessionStorage.setItem("myQueueNumber", queueNumber);
+
+    let activeQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
+
+    activeQueue.push(queueNumber);
+
+    localStorage.setItem("activeQueue", JSON.stringify(activeQueue));
+
+    if (localStorage.getItem("currentlyServing") === null) {
+        localStorage.setItem("currentlyServing", queueNumber);
+    }
+
+    window.location.href = "queue.html";
+}
   </script>
 
 </body>
