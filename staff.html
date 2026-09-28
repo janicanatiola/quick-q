@@ -53,8 +53,42 @@
 }
 
         function skipNumber() {
-            alert("Skip clicked!");
-        }
+    let activeQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
+
+    if (activeQueue.length === 0) {
+        alert("No one is waiting.");
+        return;
+    }
+
+    let current = Number(localStorage.getItem("currentlyServing")) || activeQueue[0];
+
+    let currentIndex = activeQueue.indexOf(current);
+
+    if (currentIndex === -1) {
+        alert("Current number not found.");
+        return;
+    }
+
+    activeQueue.splice(currentIndex, 1);
+
+    localStorage.setItem("activeQueue", JSON.stringify(activeQueue));
+
+    if (activeQueue.length === 0) {
+        localStorage.removeItem("currentlyServing");
+
+        document.getElementById("currentlyServing").textContent =
+            "No one is currently being served.";
+
+        return;
+    }
+
+    let nextNumber = activeQueue[0];
+
+    localStorage.setItem("currentlyServing", nextNumber);
+
+    document.getElementById("currentlyServing").textContent =
+        "Currently being served: #" + nextNumber;
+}
 
         function markServed() {
             alert("Mark Served clicked!");
