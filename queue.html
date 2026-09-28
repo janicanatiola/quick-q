@@ -33,11 +33,12 @@ if (currentlyServing === null) {
 
 document.getElementById("queueNumber").textContent = "#" + queueNumber;
 
-let peopleAhead = Number(queueNumber) - currentlyServing;
+let activeQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
 
-if (peopleAhead < 0) {
-    peopleAhead = 0;
-}
+let peopleAhead = activeQueue.filter(number =>
+    Number(number) < Number(queueNumber) &&
+    Number(number) >= Number(currentlyServing)
+).length;
 
 document.getElementById("peopleAhead").textContent =
     "People ahead of you: " + peopleAhead;
