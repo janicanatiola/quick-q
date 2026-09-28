@@ -16,7 +16,7 @@
 
     <p id="peopleAhead">People ahead of you: 0</p>
 
-    <p>Currently being served: #1</p>
+    <p id="currentlyServing">Currently being served: #1</p>
 
     <br>
 
@@ -32,6 +32,9 @@ let currentlyServing = localStorage.getItem("currentlyServing");
 if (currentlyServing === null) {
     currentlyServing = 1;
 }
+
+document.getElementById("currentlyServing").textContent =
+    "Currently being served: #" + currentlyServing;
 
 document.getElementById("queueNumber").textContent = "#" + queueNumber;
 
