@@ -24,7 +24,12 @@
 
 <script>
     let queueNumber = localStorage.getItem("queueNumber");
-let currentlyServing = 1;
+    
+let currentlyServing = localStorage.getItem("currentlyServing");
+
+if (currentlyServing === null) {
+    currentlyServing = 1;
+}
 
 document.getElementById("queueNumber").textContent = "#" + queueNumber;
 
@@ -36,7 +41,7 @@ if (peopleAhead < 0) {
 
 document.getElementById("peopleAhead").textContent =
     "People ahead of you: " + peopleAhead;
-    
+
     function cancelQueue() {
     localStorage.removeItem("queueNumber");
     window.location.href = "index.html";
