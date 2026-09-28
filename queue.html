@@ -54,6 +54,12 @@ document.getElementById("peopleAhead").textContent =
 
     localStorage.setItem("activeQueue", JSON.stringify(activeQueue));
 
+    let currentlyServing = Number(localStorage.getItem("currentlyServing"));
+
+    if (myNumber === currentlyServing && activeQueue.length > 0) {
+        localStorage.setItem("currentlyServing", activeQueue[0]);
+    }
+
     sessionStorage.removeItem("myQueueNumber");
 
     window.location.href = "index.html";
