@@ -48,6 +48,23 @@ let peopleAhead = activeQueue.filter(number =>
 document.getElementById("peopleAhead").textContent =
     "People ahead of you: " + peopleAhead;
 
+    function updateQueue() {
+    let currentServing = Number(localStorage.getItem("currentlyServing")) || 1;
+
+    let updatedQueue = JSON.parse(localStorage.getItem("activeQueue")) || [];
+
+    let updatedPeopleAhead = updatedQueue.filter(number =>
+        Number(number) < Number(queueNumber) &&
+        Number(number) >= currentServing
+    ).length;
+
+    document.getElementById("peopleAhead").textContent =
+        "People ahead of you: " + updatedPeopleAhead;
+
+    document.getElementById("currentlyServing").textContent =
+        "Currently being served: #" + currentServing;
+}
+
     function cancelQueue() {
     let myNumber = Number(sessionStorage.getItem("myQueueNumber"));
 
@@ -76,10 +93,6 @@ function resetQueue() {
 
     window.location.href = "index.html";
 }
-
-setInterval(function() {
-    location.reload();
-}, 1000);
 
 </script>
 
