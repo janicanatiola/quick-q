@@ -24,11 +24,19 @@
 
 <script>
     let queueNumber = localStorage.getItem("queueNumber");
-    document.getElementById("queueNumber").textContent = "#" + queueNumber;
+let currentlyServing = 1;
 
-    document.getElementById("peopleAhead").textContent =
-    "People ahead of you: " + (Number(queueNumber) - 1);
+document.getElementById("queueNumber").textContent = "#" + queueNumber;
 
+let peopleAhead = Number(queueNumber) - currentlyServing;
+
+if (peopleAhead < 0) {
+    peopleAhead = 0;
+}
+
+document.getElementById("peopleAhead").textContent =
+    "People ahead of you: " + peopleAhead;
+    
     function cancelQueue() {
     localStorage.removeItem("queueNumber");
     window.location.href = "index.html";
